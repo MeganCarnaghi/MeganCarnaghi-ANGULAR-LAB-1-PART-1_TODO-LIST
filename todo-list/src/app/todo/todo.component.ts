@@ -34,7 +34,7 @@ export class TodoComponent implements OnInit {
   ];
 
   // function to add new todo item to list
-  addNewTodo() {
+  addTask() {
     // Push new todo to todos array
     this.todos.push({
       task: this.newTodo,
@@ -45,7 +45,12 @@ export class TodoComponent implements OnInit {
   }
 
   // function to delete todo item from list
-  deleteTodo(i: number) {
+  removeTask(i: number) {
     this.todos.splice(i, 1);
+  }
+
+  // function to "complete" a task
+  completeTask(i: number) {
+    this.todos[i].completed = true;
   }
 }

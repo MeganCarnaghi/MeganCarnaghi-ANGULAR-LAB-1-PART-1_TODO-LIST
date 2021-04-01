@@ -21,7 +21,7 @@
     <li *ngFor="let todo of todos; let i = index" class="main__todo-li">
       <div class="main__todo-div">
         <button
-          (click)="todo.completed = true"
+          (click)="completeTask(i)"
           *ngIf="todo.completed === false"
           class="main__complete-btn"
         >
@@ -31,7 +31,7 @@
           {{ todo.task }}
         </p>
         <div class="main__deleteBtn-div">
-          <button (click)="deleteTodo(i)" class="main__delete-btn">
+          <button (click)="removeTask(i)" class="main__delete-btn">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
         </div>
@@ -51,7 +51,7 @@
       [(ngModel)]="newTodo"
     />
     <input
-      (click)="addNewTodo()"
+      (click)="addTask()"
       type="submit"
       value="Add"
       class="main__todo-submit-input"
