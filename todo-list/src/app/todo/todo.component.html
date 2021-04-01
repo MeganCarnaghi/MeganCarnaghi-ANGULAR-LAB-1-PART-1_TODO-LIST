@@ -39,6 +39,11 @@
     </li>
   </ol>
 
+  <!-- Message to show if there are no tasks -->
+  <div *ngIf="todos.length === 0" class="main__notasks-div">
+    <h2>Nothing to do! 👏🏻</h2>
+  </div>
+
   <!-- Form to add new todos -->
   <form class="main__todo-form" method="GET" action="">
     <label for="todo"></label>

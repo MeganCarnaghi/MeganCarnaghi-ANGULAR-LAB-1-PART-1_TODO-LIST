@@ -37,6 +37,11 @@ button {
   margin: 5px;
 }
 
+.main__notasks-div {
+  display: flex;
+  justify-content: center;
+}
+
 .main__deleteBtn-div {
   flex: 1;
   text-align: right;
