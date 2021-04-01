@@ -44,9 +44,11 @@
     >
       {{ todo.task }}
     </p>
-    <button (click)="deleteTodo(i)" class="main__delete-btn">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </button>
+    <div class="main__deleteBtn-div">
+      <button (click)="deleteTodo(i)" class="main__delete-btn">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
 
   <!-- Form to add new todos -->

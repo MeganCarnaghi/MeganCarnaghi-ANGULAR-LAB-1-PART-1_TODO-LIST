@@ -1,3 +1,7 @@
+button {
+  cursor: pointer;
+}
+
 .main {
   background-color: #ffffff;
   padding: 20px;
@@ -31,6 +35,11 @@
 
 .main__todo-p {
   margin-right: 10px;
+}
+
+.main__deleteBtn-div {
+  flex: 1;
+  text-align: right;
 }
 
 .main__delete-btn {
