@@ -17,39 +17,27 @@
   </form>
 
   <!-- List of all existing tasks-->
-  <!-- When I use flexbox on the OL, the numbers disappear??? -->
-  <!-- <ol>
-    <li
-      *ngFor="let todo of todos; let i = index"
-      class="main__todo-li"
-      [ngClass]="todo?.completed === true ? 'completed' : ''"
-    >
-      <button *ngIf="todo?.completed === false" class="main__complete-btn">
-        Complete</button
-      >{{ i }} {{ todo.task }}
-      <button class="main__delete-btn">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
+  <ol>
+    <li *ngFor="let todo of todos; let i = index" class="main__todo-li">
+      <div class="main__todo-div">
+        <button
+          (click)="todo.completed = true"
+          *ngIf="todo.completed === false"
+          class="main__complete-btn"
+        >
+          Complete
+        </button>
+        <p class="main__todo-p" [ngClass]="{ completed: todo.completed }">
+          {{ todo.task }}
+        </p>
+        <div class="main__deleteBtn-div">
+          <button (click)="deleteTodo(i)" class="main__delete-btn">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
     </li>
-  </ol> -->
-
-  <div class="main__todo-div" *ngFor="let todo of todos; let i = index">
-    <p class="main__todo-p">{{ i + 1 }}.</p>
-    <button *ngIf="todo?.completed === false" class="main__complete-btn">
-      Complete
-    </button>
-    <p
-      class="main__todo-p"
-      [ngClass]="todo?.completed === true ? 'completed' : ''"
-    >
-      {{ todo.task }}
-    </p>
-    <div class="main__deleteBtn-div">
-      <button (click)="deleteTodo(i)" class="main__delete-btn">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
+  </ol>
 
   <!-- Form to add new todos -->
   <form class="main__todo-form" method="GET" action="">

@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [
     {
       task: 'do laundry',
-      completed: false,
+      completed: true,
     },
     {
       task: 'walk Gus',
