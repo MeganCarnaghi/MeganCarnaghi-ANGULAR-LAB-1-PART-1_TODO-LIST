@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todo/todo';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo } from './todo';
 
 @Component({
   selector: 'app-todo',
@@ -7,13 +7,20 @@ import { Todo } from '../todo/todo';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
+  // Variable for new todo
+  newTodo: string = '';
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
   todos: Todo[] = [
     {
       task: 'do laundry',
       completed: false,
     },
     {
-      task: 'walk dog',
+      task: 'walk Gus',
       completed: true,
     },
     {
@@ -21,12 +28,24 @@ export class TodoComponent implements OnInit {
       completed: false,
     },
     {
-      task: 'meal prep',
+      task: 'give Gus a bath',
       completed: false,
     },
   ];
 
-  constructor() {}
+  // function to add new todo item to list
+  addNewTodo() {
+    // Push new todo to todos array
+    this.todos.push({
+      task: this.newTodo,
+      completed: false,
+    });
+    // Clear input text
+    this.newTodo = '';
+  }
 
-  ngOnInit(): void {}
+  // function to delete todo item from list
+  deleteTodo(i: number) {
+    this.todos.splice(i, 1);
+  }
 }

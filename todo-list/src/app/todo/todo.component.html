@@ -1,23 +1,55 @@
 <main class="main">
-  <h1 class="main__h1">TODO List</h1>
-  <h4 class="main__h4">A place to store your to-dos</h4>
-  <label for="filter"></label>
-  <input
-    id="filter"
-    name="filter"
-    type="text"
-    placeholder="Filter your to-dos"
-    class="main__filter-input"
-  />
-  <ol>
-    <li *ngFor="let todo of todos; let i = index" class="main__todo-li">
-      <button class="main__complete-btn">Complete</button>{{ todo.task }} -
-      {{ todo.completed }}
+  <header>
+    <h1 class="main__h1">TODO List</h1>
+    <h4 class="main__h4">A place to store your to-dos</h4>
+  </header>
+
+  <!-- Filtering To-Do's-->
+  <form class="main__todo-form">
+    <label for="filter"></label>
+    <input
+      id="filter"
+      name="filter"
+      type="text"
+      placeholder="Filter your to-dos"
+      class="main__filter-input"
+    />
+  </form>
+
+  <!-- List of all existing tasks-->
+  <!-- When I use flexbox on the OL, the numbers disappear??? -->
+  <!-- <ol>
+    <li
+      *ngFor="let todo of todos; let i = index"
+      class="main__todo-li"
+      [ngClass]="todo?.completed === true ? 'completed' : ''"
+    >
+      <button *ngIf="todo?.completed === false" class="main__complete-btn">
+        Complete</button
+      >{{ i }} {{ todo.task }}
       <button class="main__delete-btn">
         <i class="fa fa-times" aria-hidden="true"></i>
       </button>
     </li>
-  </ol>
+  </ol> -->
+
+  <div class="main__todo-div" *ngFor="let todo of todos; let i = index">
+    <p class="main__todo-p">{{ i + 1 }}.</p>
+    <button *ngIf="todo?.completed === false" class="main__complete-btn">
+      Complete
+    </button>
+    <p
+      class="main__todo-p"
+      [ngClass]="todo?.completed === true ? 'completed' : ''"
+    >
+      {{ todo.task }}
+    </p>
+    <button (click)="deleteTodo(i)" class="main__delete-btn">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- Form to add new todos -->
   <form class="main__todo-form" method="GET" action="">
     <label for="todo"></label>
     <input
@@ -26,7 +58,13 @@
       type="text"
       placeholder="Add your to-do"
       class="main__todo-input"
+      [(ngModel)]="newTodo"
     />
-    <input type="submit" value="Add" class="main__todo-submit-input" />
+    <input
+      (click)="addNewTodo()"
+      type="submit"
+      value="Add"
+      class="main__todo-submit-input"
+    />
   </form>
 </main>
