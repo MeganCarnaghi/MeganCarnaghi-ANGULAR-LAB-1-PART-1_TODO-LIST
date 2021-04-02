@@ -10,6 +10,9 @@ export class TodoComponent implements OnInit {
   // Variable for new todo
   newTodo: string = '';
 
+  // Variable for search text in filter
+  searchText: string | null = null;
+
   constructor() {}
 
   ngOnInit(): void {}
