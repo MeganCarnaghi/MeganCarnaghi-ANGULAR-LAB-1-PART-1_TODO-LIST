@@ -38,11 +38,16 @@ export class TodoComponent implements OnInit {
 
   // function to add new todo item to list
   addTask() {
-    // Push new todo to todos array
-    this.todos.push({
-      task: this.newTodo,
-      completed: false,
-    });
+    if (this.newTodo === '') {
+      alert('Please enter a to-do.');
+    } else {
+      // Push new todo to todos array
+      this.todos.push({
+        task: this.newTodo,
+        completed: false,
+      });
+    }
+
     // Clear input text
     this.newTodo = '';
   }
